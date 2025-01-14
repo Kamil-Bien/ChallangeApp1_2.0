@@ -1,30 +1,77 @@
 ﻿//Kurs podstawowy C#
-//Praca domowa nr 5
+//Praca domowa nr 6
 
-//deklaracja zmiennych oraz konwersja liczby podanej w typie int na tablice znaków (char)
-int number = 4650660; 
-string numberInString = number.ToString(); 
-char[] letters = numberInString.ToArray(); 
-int[] countNumber = new int[10];
+using ChallangeApp1_2._0;
 
+//tworzenie nowych obiektów (pracowników) korzystając z klasy Employee
+Employee worker1 = new Employee("Jan", "Dzban", 24);
+Employee worker2 = new Employee("Roman", "Bosy", 35);
+Employee worker3 = new Employee("Żylisław", "Świerczyński-Brzęczyszczykiewicz", 55);
 
-foreach (var oneNumber in letters) //pętla dla każdego elementu utworzonej tablicy
+//przydzielanie punktów pracownikom 
+worker1.AddScore(5);
+worker1.AddScore(3);
+worker1.AddScore(5);
+worker1.AddScore(4);
+worker1.AddScore(5);
+
+worker2.AddScore(5);
+worker2.AddScore(2);
+worker2.AddScore(4);
+worker2.AddScore(5);
+worker2.AddScore(4);
+
+worker3.AddScore(5);
+worker3.AddScore(6);
+worker3.AddScore(2);
+worker3.AddScore(5);
+worker3.AddScore(5);
+
+//utworzenie listy pracowników
+List<Employee> workers = new List<Employee>()
 {
-    //w pętli wykonano dwie konwersje zmiennych w string w celach porównanwczych
-    string oneNumberString = oneNumber.ToString();
-    for (int i = 0; i < 10; i++) //pętla służąca do inkrementacji wystąpień danej cyfry w tablicy
+    worker1, worker2, worker3
+};
+
+//deklaracja listy najlepszych pracowników
+List<Employee> employeeOfTheMonth = new List<Employee>();
+
+//zmienne pomocnicze do poniższych dwóch pętli
+int bestScore = -1;
+Employee bestWorker = null;
+
+//wyłonienie najwyższego wyniku
+foreach (var worker in workers)
+{
+    if (worker.Result > bestScore)
     {
-        string iString = i.ToString();
-        if (iString == oneNumberString)
-        {
-            countNumber[i]++;
-        }
+        bestScore = worker.Result;
+        bestWorker = worker;
     }
 }
 
-//wyświetlenie wyników powyższego procesu
-Console.WriteLine("cyfra => liczba wystąpień");
-for (int i = 0; i < 10; i++)
+//wyłonienie pracowników z najwyższym wynikiem i dodanie ich do listy najlepszych pracowników (ex aequo pierwsze miejsce)
+foreach (var worker in workers)
 {
-    Console.WriteLine(i + " => " + countNumber[i]);
+    if (worker.Result == bestWorker.Result)
+    {
+        employeeOfTheMonth.Add(worker);
+    }
+}
+
+//wyświetlenie najlepszego pracownika lub najlepszych pracowników (osiągających ten sam najwyższy wynik)
+if (employeeOfTheMonth.Count == 1)
+{
+    Console.WriteLine("Pracownik miesiąca:");
+    Console.WriteLine();
+    Console.WriteLine(bestWorker.name + " " + bestWorker.surname + ", wiek: " + bestWorker.age + " lat, uzyskał wynik: " + bestWorker.Result + "pkt");
+}
+else
+{
+    Console.WriteLine("Pracownicy miesiąca, uzyskali wynik " + bestScore + "pkt");
+    Console.WriteLine();
+    foreach (var bestWorkers in employeeOfTheMonth)
+    {
+        Console.WriteLine(bestWorkers.name + " " + bestWorkers.surname + ", wiek: " + bestWorkers.age);
+    }
 }
