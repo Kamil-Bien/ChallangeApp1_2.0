@@ -21,9 +21,14 @@
                 return this.score.Sum();
             }
         }
-        public void AddScore(int number) //metoda odpowiedzialna za sumę punktów danego użytkownika
+        public void AddScore(int number) //metoda odpowiedzialna za dodawanie punktów do puli punktów danego użytkownika
         {
             this.score.Add(number);
+        }
+
+        public void SubtractScore(int number) //metoda odpowiedzialna za dodawanie punktów ujemnych do puli punktów danego użytkownika
+        {
+            this.score.Add(-number);
         }
     }
 }

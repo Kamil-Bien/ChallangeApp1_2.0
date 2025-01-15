@@ -13,7 +13,7 @@ worker1.AddScore(5);
 worker1.AddScore(3);
 worker1.AddScore(5);
 worker1.AddScore(4);
-worker1.AddScore(5);
+worker1.SubtractScore(5);
 
 worker2.AddScore(5);
 worker2.AddScore(2);
