@@ -14,6 +14,11 @@
             this.surname = surname;
             this.age = age;
         }
+
+        public Employee(string name) // drugi konstruktor 
+        {
+            this.name = name;
+        }
         public int Result //property (pole/właściwość) zwraca sumę punktów zawartych w liście "score" danego użytkownika
         {
             get
@@ -23,11 +28,19 @@
         }
         public void AddScore(int number) //metoda odpowiedzialna za dodawanie punktów do puli punktów danego użytkownika
         {
+            if (number < 0)
+            {
+                number = Math.Abs(number);
+            }
             this.score.Add(number);
         }
 
         public void SubtractScore(int number) //metoda odpowiedzialna za dodawanie punktów ujemnych do puli punktów danego użytkownika
         {
+            if (number < 0)
+            {
+                number = Math.Abs(number);
+            }
             this.score.Add(-number);
         }
     }
