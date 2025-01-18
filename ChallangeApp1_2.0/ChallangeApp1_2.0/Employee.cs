@@ -4,45 +4,47 @@
     {
         public string name { get; private set; }
         public string surname { get; private set; }
-        public int age { get; private set; }
 
-        private List<int> score = new List<int>();
+        private List<float> score = new List<float>();
 
-        public Employee(string name, string surname, int age) //konstruktor
+        public Employee(string name, string surname) //konstruktor
         {
             this.name = name;
             this.surname = surname;
-            this.age = age;
         }
 
-        public Employee(string name) // drugi konstruktor 
+    
+        public void AddScore(float number) //property (pole/właściwość) odpowiedzialne za dodawanie punktów do puli punktów danego użytkownika
         {
-            this.name = name;
+            this.score.Add(number);
         }
-        public int Result //property (pole/właściwość) zwraca sumę punktów zawartych w liście "score" danego użytkownika
+
+        public float Result //property zwraca sumę punktów zawartych w liście "score" danego użytkownika
         {
             get
             {
                 return this.score.Sum();
             }
         }
-        public void AddScore(int number) //metoda odpowiedzialna za dodawanie punktów do puli punktów danego użytkownika
+
+        public Statistics GetStatistics() //metoda obliczająca statystyki (bazuje na modelu danych z klasy Statistics)
         {
-            if (number < 0)
+            var statistics = new Statistics();
+
+            statistics.Min = float.MaxValue;
+            statistics.Max = float.MinValue;
+            statistics.Avarage = 0;
+
+            foreach (var score in this.score)
             {
-                number = Math.Abs(number);
+                statistics.Min = Math.Min(statistics.Min, score);
+                statistics.Max = Math.Max(statistics.Max, score);
             }
-            this.score.Add(number);
+
+            statistics.Avarage = this.Result / this.score.Count;
+
+            return statistics;
         }
 
-        public void SubtractScore(int number) //metoda odpowiedzialna za dodawanie punktów ujemnych do puli punktów danego użytkownika
-        {
-            if (number < 0)
-            {
-                number = Math.Abs(number);
-            }
-            this.score.Add(-number);
-        }
     }
 }
-
