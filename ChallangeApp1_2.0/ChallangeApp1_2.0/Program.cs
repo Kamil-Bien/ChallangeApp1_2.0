@@ -10,7 +10,10 @@ var worker1 = new Employee("Jan", "Dzban");
 //przydzielanie punktów pracownikom 
 worker1.AddScore(5);
 worker1.AddScore(-4);
-worker1.AddScore(-1);
+worker1.AddScore("88");
+worker1.AddScore("108");
+worker1.AddScore("2O");
+worker1.AddScore(42.67898768040653268m);
 
 //pobranie i wyświetlenie danych statystycznych
 var statistics = worker1.GetStatistics();

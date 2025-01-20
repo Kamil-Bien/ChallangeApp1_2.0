@@ -13,12 +13,43 @@
             this.surname = surname;
         }
 
-    
-        public void AddScore(float number) //property (pole/właściwość) odpowiedzialne za dodawanie punktów do puli punktów danego użytkownika
+    //--------------------------metody dodawania punktów do oceny ogólnej pracownika, z podziałem na różne typy danych wejściowych-------------------
+        public void AddScore(float numberOfPionts) //property (pole/właściwość) odpowiedzialne za dodawanie punktów do puli punktów danego użytkownika
         {
-            this.score.Add(number);
+            if (numberOfPionts >= 0 && numberOfPionts <= 100)
+            {
+                this.score.Add(numberOfPionts);
+            }
+            else
+            {
+                Console.WriteLine($"Podana liczba -> {numberOfPionts} nie spełnia wrunków! Musi znajdować się w zakresie 0-100");
+            }
         }
 
+        public void AddScore(string numberOfPionts)
+        {
+            if (float.TryParse(numberOfPionts, out float resultOfTypeCasting))
+            {
+                this.AddScore(resultOfTypeCasting);
+            }
+            else
+            {
+                Console.WriteLine($"Podana wartość -> {numberOfPionts} nie spełnia wrunków! Błąd rzutowania zmiennej");
+            }
+        }
+
+        public void AddScore(decimal numberOfPionts)
+        {
+           float numberOfPiontsFromDecimalType = (float)numberOfPionts;
+           this.AddScore(numberOfPiontsFromDecimalType);
+        }
+        public void AddScore(int numberOfPionts)
+        {
+            float numberOfPiontsFromIntigerType = (float)numberOfPionts;
+            this.AddScore(numberOfPiontsFromIntigerType);
+        }
+
+        //------------------------------------------------------------------------------------------------------------------
         public float Result //property zwraca sumę punktów zawartych w liście "score" danego użytkownika
         {
             get
@@ -26,6 +57,8 @@
                 return this.score.Sum();
             }
         }
+
+
 
         public Statistics GetStatistics() //metoda obliczająca statystyki (bazuje na modelu danych z klasy Statistics)
         {
