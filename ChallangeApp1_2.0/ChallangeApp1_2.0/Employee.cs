@@ -63,7 +63,7 @@ namespace ChallangeApp1_2._0
 
 
 
-        public Statistics GetStatisticsWithForEeach() //metoda obliczająca statystyki (bazuje na modelu danych z klasy Statistics)
+        public Statistics GetStatistics() //metoda obliczająca statystyki (bazuje na modelu danych z klasy Statistics)
         {
             var statistics = new Statistics();
 
@@ -75,68 +75,6 @@ namespace ChallangeApp1_2._0
             {
                 statistics.Min = Math.Min(statistics.Min, score);
                 statistics.Max = Math.Max(statistics.Max, score);
-            }
-
-            statistics.Avarage = this.Result / this.score.Count;
-
-            return statistics;
-        }
-
-
-        public Statistics GetStatisticsWithFor()
-        {
-            var statistics = new Statistics();
-
-            statistics.Min = float.MaxValue;
-            statistics.Max = float.MinValue;
-            statistics.Avarage = 0;
-
-            for (int index = 0; index < this.score.Count; index++)
-            {
-                statistics.Min = Math.Min(statistics.Min, score[index]);
-                statistics.Max = Math.Max(statistics.Max, score[index]);
-            }
-
-            statistics.Avarage = this.Result / this.score.Count;
-
-            return statistics;
-        }
-
-        public Statistics GetStatisticsWithDoWhile() 
-        {
-            var statistics = new Statistics();
-
-            statistics.Min = float.MaxValue;
-            statistics.Max = float.MinValue;
-            statistics.Avarage = 0;
-
-            var index = 0;
-            do
-            {
-                statistics.Min = Math.Min(statistics.Min, score[index]);
-                statistics.Max = Math.Max(statistics.Max, score[index]);
-                index++;
-            } while (index < this.score.Count);
-
-            statistics.Avarage = this.Result / this.score.Count;
-
-            return statistics;
-        }
-
-        public Statistics GetStatisticsWithWhile()
-        {
-            var statistics = new Statistics();
-
-            statistics.Min = float.MaxValue;
-            statistics.Max = float.MinValue;
-            statistics.Avarage = 0;
-
-            var index = 0;
-            while (index < this.score.Count)
-            {
-                statistics.Min = Math.Min(statistics.Min, score[index]);
-                statistics.Max = Math.Max(statistics.Max, score[index]);
-                index++;
             }
 
             statistics.Avarage = this.Result / this.score.Count;
