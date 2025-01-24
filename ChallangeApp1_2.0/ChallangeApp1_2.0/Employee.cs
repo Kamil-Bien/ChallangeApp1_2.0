@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq.Expressions;
-using System.Reflection;
-
-namespace ChallangeApp1_2._0
+﻿namespace ChallangeApp1_2._0
 {
     public class Employee
     {
@@ -26,7 +22,7 @@ namespace ChallangeApp1_2._0
             }
             else
             {
-                Console.WriteLine($"Podana liczba -> {numberOfPionts} nie spełnia wrunków! Musi znajdować się w zakresie 0-100");
+                throw new Exception("Podana liczba musi znajdować się w zakresie 0-100");
             }
         }
 
@@ -38,7 +34,7 @@ namespace ChallangeApp1_2._0
             }
             else
             {
-                Console.WriteLine($"Podana wartość -> {numberOfPionts} nie spełnia wrunków! Błąd rzutowania zmiennej");
+                throw new Exception("Błąd rzutowania zmiennej");
             }
         }
 
@@ -51,24 +47,6 @@ namespace ChallangeApp1_2._0
         {
             float numberOfPiontsFromIntigerType = (float)numberOfPionts;
             this.AddScore(numberOfPiontsFromIntigerType);
-        }
-
-        public void AddScore(char numberOfPoints)
-        {
-            switch (numberOfPoints)
-            {
-                case 'A':
-                case 'a':
-                    this.score.Add(100);
-                    break;
-                case 'B':
-                    this.score.Add(10);
-                    break;
-                default:
-                    Console.WriteLine("Nieobsługiwana wartoś char");
-                    break;
-
-            }
         }
 
         //------------------------------------------------------------------------------------------------------------------

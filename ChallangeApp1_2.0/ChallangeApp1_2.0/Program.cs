@@ -1,5 +1,5 @@
 ﻿//Kurs podstawowy C#
-//Praca domowa nr 12
+//Praca domowa nr 13
 
 using System;
 using ChallangeApp1_2._0;
@@ -16,7 +16,17 @@ while (true)
     {
         break;
     }
-    worker1.AddScore(input);
+
+    
+    try
+    {
+        worker1.AddScore(input); //tutaj wykonuje kroki i sprawdza czy pojawiło się ecception
+    }
+    catch (Exception toJestTymczasowaZmienna)
+    {
+        Console.WriteLine($"Wykryto wyjątek: {toJestTymczasowaZmienna.Message}"); //jeśli pojawi się Exception to wtedy zadział catch i wykona się ta linia
+    }
+
 
     Console.WriteLine();
     Console.WriteLine("Możesz podać kolejną ocenę lub zakończyć podając Q jako kolejną wartość");
@@ -41,3 +51,11 @@ Console.WriteLine();
     Console.WriteLine("DZIĘKUJEMY ZA SKORZYSTANIE Z NASZEGO PROGRAMU");
     Console.WriteLine();
 
+try
+{
+    //tutaj sprawdza czy pojawiło się ecception
+}
+catch(Exception)
+{
+    //jeśli pojawi się Exception to wtedy zadział catch i wykona się ta linia
+}
