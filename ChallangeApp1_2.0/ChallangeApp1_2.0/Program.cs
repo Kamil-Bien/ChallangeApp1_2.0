@@ -1,11 +1,11 @@
 ﻿//Kurs podstawowy C#
-//Praca domowa nr 13
+//Praca domowa nr 14
 
 using System;
 using ChallangeApp1_2._0;
 
 //tworzenie nowych obiektów (pracowników) korzystając z klasy Employee
-var worker1 = new Employee("Jan", "Dzban");
+var worker1 = new Employee("Jan", "Dzban", 'M');
 
 Console.WriteLine("Podaj ocenę pracownika mieszczącą się w przedziale od 0 do 100");
 Console.WriteLine("(Jeżeli chcesz odrazu zakończyć wciśnij Q a następnie ENTER)");
@@ -50,12 +50,3 @@ else
 Console.WriteLine();
     Console.WriteLine("DZIĘKUJEMY ZA SKORZYSTANIE Z NASZEGO PROGRAMU");
     Console.WriteLine();
-
-try
-{
-    //tutaj sprawdza czy pojawiło się ecception
-}
-catch(Exception)
-{
-    //jeśli pojawi się Exception to wtedy zadział catch i wykona się ta linia
-}

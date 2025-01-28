@@ -1,16 +1,14 @@
 ﻿namespace ChallangeApp1_2._0
 {
-    public class Employee
+    public class Employee : Person
     {
-        public string name { get; private set; }
-        public string surname { get; private set; }
+  
 
         private List<float> score = new List<float>();
 
-        public Employee(string name, string surname) //konstruktor
+        public Employee(string name, string surname, char sex) //konstruktor
+            : base(name, surname, sex)
         {
-            this.name = name;
-            this.surname = surname;
         }
 
         //--------------------------metody dodawania punktów do oceny ogólnej pracownika, z podziałem na różne typy danych wejściowych-------------------
