@@ -1,11 +1,10 @@
 ﻿//Kurs podstawowy C#
-//Praca domowa nr 14
+//Praca domowa nr 15
 
-using System;
 using ChallangeApp1_2._0;
 
 //tworzenie nowych obiektów (pracowników) korzystając z klasy Employee
-var worker1 = new Employee("Jan", "Dzban", 'M');
+var worker1 = new Supervisor("Jan", "Dzban");
 
 Console.WriteLine("Podaj ocenę pracownika mieszczącą się w przedziale od 0 do 100");
 Console.WriteLine("(Jeżeli chcesz odrazu zakończyć wciśnij Q a następnie ENTER)");
@@ -26,8 +25,8 @@ while (true)
     {
         Console.WriteLine($"Wykryto wyjątek: {toJestTymczasowaZmienna.Message}"); //jeśli pojawi się Exception to wtedy zadział catch i wykona się ta linia
     }
-
-
+    
+    
     Console.WriteLine();
     Console.WriteLine("Możesz podać kolejną ocenę lub zakończyć podając Q jako kolejną wartość");
 }

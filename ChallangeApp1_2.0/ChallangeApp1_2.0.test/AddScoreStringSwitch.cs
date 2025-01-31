@@ -1,9 +1,9 @@
 namespace ChallangeApp1_2._0.test
 {
-    public class GetStatisticsTests
+    public class AddScoreStringSwitch
     {
         [Test]
-        public void AverageLetterValueTests()
+        public void AddScoreStringSwitchTest()
         {
             //Arrange
             Employee worker1 = new Employee("Johny", "Test1");

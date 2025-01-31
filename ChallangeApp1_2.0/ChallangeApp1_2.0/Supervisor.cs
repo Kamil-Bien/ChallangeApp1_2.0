@@ -1,22 +1,20 @@
 ﻿namespace ChallangeApp1_2._0
 {
-    public class Employee : IEmployee
-    { 
+    public class Supervisor : IEmployee
+    {
+        public string Name { get; private set; } 
 
-        public string Name { get; private set; }
         public string Surname { get; private set; }
 
         private List<float> score = new List<float>();
 
-
-        public Employee(string name, string surname) //konstruktor
+        public Supervisor(string name, string surname)
         {
             this.Name = name;
             this.Surname = surname;
         }
 
-        //--------------------------metody dodawania punktów do oceny ogólnej pracownika, z podziałem na różne typy danych wejściowych-------------------
-        public void AddScore(float numberOfPionts) //property (pole/właściwość) odpowiedzialne za dodawanie punktów do puli punktów danego użytkownika
+        public void AddScore(float numberOfPionts)
         {
             if (numberOfPionts >= 0 && numberOfPionts <= 100)
             {
@@ -30,14 +28,86 @@
 
         public void AddScore(string numberOfPionts)
         {
-            if (float.TryParse(numberOfPionts, out float resultOfTypeCasting))
+
+            switch (numberOfPionts)
             {
-                this.AddScore(resultOfTypeCasting);
+                case "1":
+                    this.score.Add(0);
+                    break;
+                case "1+":
+                case "+1":
+                    this.score.Add(5);
+                    break;
+
+                case "2-":
+                case "-2":
+                    this.score.Add(15);
+                    break;
+                case "2":
+                    this.score.Add(20);
+                    break;
+                case "2+":
+                case "+2":
+                    this.score.Add(25);
+                    break;
+
+                case "3-":
+                case "-3":
+                    this.score.Add(35);
+                    break;
+                case "3":
+                    this.score.Add(40);
+                    break;
+                case "3+":
+                case "+3":
+                    this.score.Add(45);
+                    break;
+
+                case "4-":
+                case "-4":
+                    this.score.Add(55);
+                    break;
+                case "4":
+                    this.score.Add(60);
+                    break;
+                case "4+":
+                case "+4":
+                    this.score.Add(65);
+                    break;
+
+                case "5-":
+                case "-5":
+                    this.score.Add(75);
+                    break;
+                case "5":
+                    this.score.Add(80);
+                    break;
+                case "5+":
+                case "+5":
+                    this.score.Add(85);
+                    break;
+
+                case "6-":
+                case "-6":
+                    this.score.Add(95);
+                    break;
+                case "6":
+                    this.score.Add(100);
+                    break;
+
+                default:
+                    if (float.TryParse(numberOfPionts, out float resultOfTypeCasting))
+                    {
+                        this.AddScore(resultOfTypeCasting);
+                    }
+                    else
+                    {
+                        throw new Exception("Błąd rzutowania zmiennej");
+                    }
+                    break;
+
             }
-            else
-            {
-                throw new Exception("Błąd rzutowania zmiennej");
-            }
+
         }
 
         public void AddScore(decimal numberOfPionts)
@@ -45,24 +115,21 @@
             float numberOfPiontsFromDecimalType = (float)numberOfPionts;
             this.AddScore(numberOfPiontsFromDecimalType);
         }
+
         public void AddScore(int numberOfPionts)
         {
             float numberOfPiontsFromIntigerType = (float)numberOfPionts;
             this.AddScore(numberOfPiontsFromIntigerType);
         }
 
-        //------------------------------------------------------------------------------------------------------------------
-        public float Result //property zwraca sumę punktów zawartych w liście "score" danego użytkownika
+        public float Result 
         {
             get
             {
                 return this.score.Sum();
             }
         }
-
-
-
-        public Statistics GetStatistics() //metoda obliczająca statystyki (bazuje na modelu danych z klasy Statistics)
+        public Statistics GetStatistics()
         {
             if (this.score.Count > 0)
             {
@@ -106,9 +173,6 @@
             {
                 return null;
             }
-
         }
-
-
     }
 }
