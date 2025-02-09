@@ -1,12 +1,12 @@
 namespace ChallangeApp1_2._0.test
 {
-    public class AddScoreStringSwitch
+    public class Testy
     {
         [Test]
         public void AddScoreStringSwitchTest()
         {
             //Arrange
-            Employee worker1 = new Employee("Johny", "Test1");
+            EmployeeInMemory worker1 = new EmployeeInMemory("Johny", "Test1");
             worker1.AddScore(10);
             worker1.AddScore(70);
             worker1.AddScore(22);

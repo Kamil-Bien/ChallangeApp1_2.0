@@ -4,7 +4,7 @@
 using ChallangeApp1_2._0;
 
 //tworzenie nowych obiektów (pracowników) korzystając z klasy Employee
-var worker1 = new Supervisor("Jan", "Dzban");
+var worker1 = new EmployeeInMemory("Jan", "Dzban");
 
 Console.WriteLine("Podaj ocenę pracownika mieszczącą się w przedziale od 0 do 100");
 Console.WriteLine("(Jeżeli chcesz odrazu zakończyć wciśnij Q a następnie ENTER)");

@@ -1,22 +1,25 @@
 ﻿namespace ChallangeApp1_2._0
 {
-    public class Employee : IEmployee
-    { 
+    public class EmployeeInMemory : EmployeeBase
+    {
 
-        public string Name { get; private set; }
-        public string Surname { get; private set; }
-
-        private List<float> score = new List<float>();
-
-
-        public Employee(string name, string surname) //konstruktor
+        public EmployeeInMemory(string name, string surname) //konstruktor
+            : base(name, surname)
         {
-            this.Name = name;
-            this.Surname = surname;
+        }
+
+        protected List<float> score = new List<float>();
+
+        public override List<float> Score
+        {
+            get
+            {
+                return score;
+            }
         }
 
         //--------------------------metody dodawania punktów do oceny ogólnej pracownika, z podziałem na różne typy danych wejściowych-------------------
-        public void AddScore(float numberOfPionts) //property (pole/właściwość) odpowiedzialne za dodawanie punktów do puli punktów danego użytkownika
+        public override void AddScore(float numberOfPionts) //property (pole/właściwość) odpowiedzialne za dodawanie punktów do puli punktów danego użytkownika
         {
             if (numberOfPionts >= 0 && numberOfPionts <= 100)
             {
@@ -28,7 +31,7 @@
             }
         }
 
-        public void AddScore(string numberOfPionts)
+        public override void AddScore(string numberOfPionts)
         {
             if (float.TryParse(numberOfPionts, out float resultOfTypeCasting))
             {
@@ -40,29 +43,32 @@
             }
         }
 
-        public void AddScore(decimal numberOfPionts)
+        public override void AddScore(decimal numberOfPionts)
         {
             float numberOfPiontsFromDecimalType = (float)numberOfPionts;
             this.AddScore(numberOfPiontsFromDecimalType);
         }
-        public void AddScore(int numberOfPionts)
+        public override void AddScore(int numberOfPionts)
         {
             float numberOfPiontsFromIntigerType = (float)numberOfPionts;
             this.AddScore(numberOfPiontsFromIntigerType);
         }
 
-        //------------------------------------------------------------------------------------------------------------------
-        public float Result //property zwraca sumę punktów zawartych w liście "score" danego użytkownika
+      //  ------------------------------------------------------------------------------------------------------------------
+       
+
+        public override float Result
         {
             get
-            {
-                return this.score.Sum();
+            { 
+                return this.score.Sum(); 
             }
+            
         }
 
 
 
-        public Statistics GetStatistics() //metoda obliczająca statystyki (bazuje na modelu danych z klasy Statistics)
+        public override Statistics GetStatistics() //metoda obliczająca statystyki (bazuje na modelu danych z klasy Statistics)
         {
             if (this.score.Count > 0)
             {
