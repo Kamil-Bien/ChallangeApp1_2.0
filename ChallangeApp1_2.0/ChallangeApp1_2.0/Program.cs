@@ -1,37 +1,35 @@
 ﻿//Kurs podstawowy C#
-//Praca domowa nr 15
+//Praca domowa nr 16
 
 using ChallangeApp1_2._0;
 
 //tworzenie nowych obiektów (pracowników) korzystając z klasy Employee
-var worker1 = new EmployeeInMemory("Jan", "Dzban");
+var worker1 = new EmployeeInFile("Jan", "Dzban");
 
 Console.WriteLine("Podaj ocenę pracownika mieszczącą się w przedziale od 0 do 100");
 Console.WriteLine("(Jeżeli chcesz odrazu zakończyć wciśnij Q a następnie ENTER)");
 while (true)
 {
     var input = Console.ReadLine();
-    if ((input == "q") || (input == "Q")) 
+    if ((input == "q") || (input == "Q"))
     {
         break;
     }
 
-    
+
     try
     {
-        worker1.AddScore(input); //tutaj wykonuje kroki i sprawdza czy pojawiło się ecception
+        worker1.AddScore(input);
     }
     catch (Exception toJestTymczasowaZmienna)
     {
-        Console.WriteLine($"Wykryto wyjątek: {toJestTymczasowaZmienna.Message}"); //jeśli pojawi się Exception to wtedy zadział catch i wykona się ta linia
+        Console.WriteLine($"Wykryto wyjątek: {toJestTymczasowaZmienna.Message}");
     }
-    
-    
+
+
     Console.WriteLine();
     Console.WriteLine("Możesz podać kolejną ocenę lub zakończyć podając Q jako kolejną wartość");
 }
-
-//pobranie i wyświetlenie danych statystycznych
 
 var statistics = worker1.GetStatistics();
 if (worker1.GetStatistics() != null)
@@ -43,9 +41,9 @@ if (worker1.GetStatistics() != null)
     Console.WriteLine($"Ten pracownik osiągnął poziom {statistics.AverageLetter:N2}");
 }
 else
-{ 
+{
     Console.WriteLine("Ten pracownik nie otrzymał żadnej oceny");
 }
 Console.WriteLine();
-    Console.WriteLine("DZIĘKUJEMY ZA SKORZYSTANIE Z NASZEGO PROGRAMU");
-    Console.WriteLine();
+Console.WriteLine("DZIĘKUJEMY ZA SKORZYSTANIE Z NASZEGO PROGRAMU");
+Console.WriteLine();

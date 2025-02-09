@@ -11,19 +11,33 @@ namespace ChallangeApp1_2._0
             this.Surname = surname;
         }
 
-        public abstract float Result { get; }
-
-        public abstract List<float> Score { get; }
-
         public abstract void AddScore(float numberOfPionts);
 
-        public abstract void AddScore(string numberOfPionts);
+        public void AddScore(string numberOfPionts)
+        {
+            if (float.TryParse(numberOfPionts, out float resultOfTypeCasting))
+            {
+                this.AddScore(resultOfTypeCasting);
+            }
+            else
+            {
+                throw new Exception("Błąd rzutowania zmiennej");
+            }
+        }
 
-        public abstract void AddScore(decimal numberOfPionts);
+        public void AddScore(decimal numberOfPionts)
+        {
+            float numberOfPiontsFromDecimalType = (float)numberOfPionts;
+            this.AddScore(numberOfPiontsFromDecimalType);
+        }
 
-        public abstract void AddScore(int numberOfPionts);
+        public void AddScore(int numberOfPionts)
+        {
+            float numberOfPiontsFromIntigerType = (float)numberOfPionts;
+            this.AddScore(numberOfPiontsFromIntigerType);
+        }
 
         public abstract Statistics GetStatistics();
-        
+
     }
 }

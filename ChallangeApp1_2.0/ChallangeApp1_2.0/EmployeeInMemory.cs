@@ -8,18 +8,9 @@
         {
         }
 
-        protected List<float> score = new List<float>();
+        private List<float> score = new List<float>();
 
-        public override List<float> Score
-        {
-            get
-            {
-                return score;
-            }
-        }
-
-        //--------------------------metody dodawania punktów do oceny ogólnej pracownika, z podziałem na różne typy danych wejściowych-------------------
-        public override void AddScore(float numberOfPionts) //property (pole/właściwość) odpowiedzialne za dodawanie punktów do puli punktów danego użytkownika
+        public override void AddScore(float numberOfPionts)
         {
             if (numberOfPionts >= 0 && numberOfPionts <= 100)
             {
@@ -31,44 +22,8 @@
             }
         }
 
-        public override void AddScore(string numberOfPionts)
-        {
-            if (float.TryParse(numberOfPionts, out float resultOfTypeCasting))
-            {
-                this.AddScore(resultOfTypeCasting);
-            }
-            else
-            {
-                throw new Exception("Błąd rzutowania zmiennej");
-            }
-        }
 
-        public override void AddScore(decimal numberOfPionts)
-        {
-            float numberOfPiontsFromDecimalType = (float)numberOfPionts;
-            this.AddScore(numberOfPiontsFromDecimalType);
-        }
-        public override void AddScore(int numberOfPionts)
-        {
-            float numberOfPiontsFromIntigerType = (float)numberOfPionts;
-            this.AddScore(numberOfPiontsFromIntigerType);
-        }
-
-      //  ------------------------------------------------------------------------------------------------------------------
-       
-
-        public override float Result
-        {
-            get
-            { 
-                return this.score.Sum(); 
-            }
-            
-        }
-
-
-
-        public override Statistics GetStatistics() //metoda obliczająca statystyki (bazuje na modelu danych z klasy Statistics)
+        public override Statistics GetStatistics()
         {
             if (this.score.Count > 0)
             {
@@ -84,7 +39,7 @@
                     statistics.Max = Math.Max(statistics.Max, score);
                 }
 
-                statistics.Average = this.Result / this.score.Count;
+                statistics.Average = this.score.Sum() / this.score.Count;
 
                 switch (statistics.Average)
                 {
