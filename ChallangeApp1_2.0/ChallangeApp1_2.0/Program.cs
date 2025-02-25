@@ -3,8 +3,14 @@
 
 using ChallangeApp1_2._0;
 
+void EmployeeGradeAdded(object sender, EventArgs args)
+{
+    Console.WriteLine("Dodano nową ocenę");
+}
+
 //tworzenie nowych obiektów (pracowników) korzystając z klasy Employee
 var worker1 = new EmployeeInFile("Jan", "Dzban");
+worker1.GradeAdded += EmployeeGradeAdded;
 
 Console.WriteLine("Podaj ocenę pracownika mieszczącą się w przedziale od 0 do 100");
 Console.WriteLine("(Jeżeli chcesz odrazu zakończyć wciśnij Q a następnie ENTER)");

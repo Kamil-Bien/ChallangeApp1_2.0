@@ -2,7 +2,7 @@
 {
     public class EmployeeInMemory : EmployeeBase
     {
-
+        public override event GradeAddedDelegate GradeAdded;
         public EmployeeInMemory(string name, string surname) //konstruktor
             : base(name, surname)
         {
@@ -15,6 +15,11 @@
             if (numberOfPionts >= 0 && numberOfPionts <= 100)
             {
                 this.score.Add(numberOfPionts);
+
+                if (GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
+                }
             }
             else
             {
