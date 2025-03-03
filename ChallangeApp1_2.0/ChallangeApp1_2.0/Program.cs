@@ -1,5 +1,5 @@
 ﻿//Kurs podstawowy C#
-//Praca domowa nr 16
+//Praca domowa nr 18
 
 using ChallangeApp1_2._0;
 
@@ -37,18 +37,20 @@ while (true)
     Console.WriteLine("Możesz podać kolejną ocenę lub zakończyć podając Q jako kolejną wartość");
 }
 
-var statistics = worker1.GetStatistics();
-if (worker1.GetStatistics() != null)
+
+
+try
 {
+    var statistics = worker1.GetStatistics();
     Console.WriteLine();
     Console.WriteLine($"Minimalna wartość punktowa otrzymana przez tego pracownika to {statistics.Min}pkt");
     Console.WriteLine($"Maksymalna wartość punktowa otrzymana przez tego pracownika to {statistics.Max}pkt");
     Console.WriteLine($"Średnia wartość ocen tego pracownika wynosi {statistics.Average:N2}pkt");
     Console.WriteLine($"Ten pracownik osiągnął poziom {statistics.AverageLetter:N2}");
 }
-else
+catch (Exception toJestTymczasowaZmienna)
 {
-    Console.WriteLine("Ten pracownik nie otrzymał żadnej oceny");
+    Console.WriteLine($"Wykryto wyjątek: {toJestTymczasowaZmienna.Message}");
 }
 Console.WriteLine();
 Console.WriteLine("DZIĘKUJEMY ZA SKORZYSTANIE Z NASZEGO PROGRAMU");
